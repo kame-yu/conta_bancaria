@@ -1,43 +1,37 @@
 import * as readlineSync from "readline-sync";
 import { Colors } from "./util/Colors";
+import { Conta } from "./model/Conta";
+import { ContaCorrente } from "./model/ContaCorrente";
+import { ContaPoupanca } from "./model/ContaPoupanca";
 
 
-export class Menu {
-  private running = true;
+export function main() {
 
-  constructor() {}
+  let opcao: string;
 
-  private cabecalho(): void {
+while (true) {
+
     console.clear();
     console.log(Colors.colorize("====================================", Colors.FgMagenta));
     console.log(Colors.colorize("          PROJETO NEWBANK           ", Colors.FgWhite));
     console.log(Colors.colorize("====================================\n", Colors.FgMagenta));
-  }
-
-  private mostrarmenu(): void {
-    console.log(Colors.colorize("[1] - Criar conta", Colors.FgYellow));
-    console.log(Colors.colorize("[2] - Listar todas as contas", Colors.FgYellow));
-    console.log(Colors.colorize("[3] - Buscar conta por número", Colors.FgYellow));
-    console.log(Colors.colorize("[4] - Atualizar dados da conta", Colors.FgYellow));
-    console.log(Colors.colorize("[5] - Apagar conta", Colors.FgYellow));
-    console.log(Colors.colorize("[6] - Sacar", Colors.FgYellow));
-    console.log(Colors.colorize("[7] - Depositar", Colors.FgYellow));
-    console.log(Colors.colorize("[8] - Transferir", Colors.FgYellow));
-    console.log(Colors.colorize("[9] - Sair\n", Colors.FgYellow));
+    console.log(Colors.colorize("[1] - Criar conta", Colors.FgWhite));
+    console.log(Colors.colorize("[2] - Listar todas as contas", Colors.FgWhite));
+    console.log(Colors.colorize("[3] - Buscar conta por número", Colors.FgWhite));
+    console.log(Colors.colorize("[4] - Atualizar dados da conta", Colors.FgWhite));
+    console.log(Colors.colorize("[5] - Apagar conta", Colors.FgWhite));
+    console.log(Colors.colorize("[6] - Sacar", Colors.FgWhite));
+    console.log(Colors.colorize("[7] - Depositar", Colors.FgWhite));
+    console.log(Colors.colorize("[8] - Transferir", Colors.FgWhite));
+    console.log(Colors.colorize("[9] - Sair\n", Colors.FgWhite));
     console.log(Colors.colorize("====================================\n", Colors.FgMagenta));
-  }
 
-        private sair(): void {
-        console.log(Colors.colorize("\nSaindo... Até logo!\n", Colors.FgCyan));
-        this.running = false;
-  }
 
-  public opcoes(): void {
-    while (this.running) {
-      this.cabecalho();
-      this.mostrarmenu();
-      const option = readlineSync.question("Digite a opcao desejada: ").trim();
-      switch (option) {
+   console.log("Entre com a opção desejada: ");
+   opcao = readlineSync.question("");
+
+
+    switch (opcao) {
         case "1":
           console.log("Opcao 1 selecionada: Criar conta");
               readlineSync.question("\nPressione ENTER para continuar...");
@@ -79,18 +73,32 @@ export class Menu {
 
           break;
         case "9":
-          console.log(Colors.colorize("\nSaindo do sistema...", Colors.FgGreen));
-              readlineSync.question("\nPressione ENTER para continuar...");
-
-          this.sair();
-
+            console.clear();
+            console.log(Colors.colorize("\nNEWBANK - A gente se vê por aqui!", Colors.FgMagenta));
+            sobre();
+            process.exit(0);
           break;
 
         default:
           console.log(Colors.colorize("\nOpção inválida.", Colors.FgRed));
           readlineSync.question("\nPressione ENTER para continuar...");
+          keyPress();
+          break;
       }
     }
   }
 
+  function sobre(): void {
+    console.log("\n*****************************************************");
+    console.log("Projeto Desenvolvido por: ");
+    console.log("Eric Silva - erics@genstudents.org");
+    console.log("github.com/kame-yu/conta_bancaria");
+    console.log("*****************************************************");
 }
+
+function keyPress(): void {
+    console.log("\nPressione enter para continuar...");
+    readlineSync.prompt();
+}
+
+main();
