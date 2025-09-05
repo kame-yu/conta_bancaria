@@ -1,4 +1,4 @@
-export abstract class Conta {
+export class Conta {
 
     
     protected _numero: number;
@@ -60,7 +60,7 @@ export abstract class Conta {
     public sacar(valor:number):boolean{
 
         if (this._saldo < valor) {
-            console.log("\n Saldo Insuficiente!");
+            console.log("\n Saldo Insuficiente. Tá liso, dorme.");
             return false;
         }
 
@@ -84,14 +84,13 @@ export abstract class Conta {
                 tipo = "Conta Poupanca";
                 break;
     }
-        console.log(`\n\n***************************************`);
-        console.log('Dados da conta\n\n');
+       
+        console.log('\nDados da conta\n\n');
         console.log(`Numero da conta: ${this._numero}`);
         console.log(`Agencia: ${this._agencia}`);
         console.log(`Tipo da Conta: ${tipo}`);
         console.log(`Titular: ${this._titular}`);
         console.log(`Saldo: R$ ${this._saldo.toFixed(2)}`);
-        console.log(`\n\n***************************************`);
     }
 }
 

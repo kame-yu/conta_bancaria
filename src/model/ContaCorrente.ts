@@ -33,5 +33,7 @@ public sacar(valor:number):boolean{
 public visualizar():void{
     super.visualizar();
     console.log(`Limite: R$ ${this._limite.toFixed(2)}`);
+    console.log(`\n\n***************************************`);
+
 }
 }

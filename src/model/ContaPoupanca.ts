@@ -20,6 +20,8 @@ export class ContaPoupanca extends Conta {
     public visualizar(): void {
         super.visualizar();
         console.log("Limite de saques mensais: " + this._limiteSaqueMensal);
+        console.log(`\n\n***************************************`);
+
     }
 
 }
